@@ -5,8 +5,19 @@
 
 package com.br.gpe.infraestructure.entitys;
 
-import jakarta.persistence.*;
-import lombok.*;
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -16,11 +27,10 @@ import lombok.*;
 @Table(name = "professor")
 @Entity
 
-
 public class Professor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "cpf", unique = true, nullable = false)
@@ -28,22 +38,20 @@ public class Professor {
 
     @Column(name = "nome", nullable = false)
     private String nome;
-    
+
     @Column(name = "rg", unique = true, nullable = false)
     private String rg;
-    
+
     @Column(name = "dataNascimento")
     private LocalDate dataNascimento;
-    
+
     @Column(name = "genero")
     private String genero;
-    
+
     @Column(name = "endereco")
     private String endereco;
-    
-    @Column (name = "telefone",nullable = false)
+
+    @Column(name = "telefone", nullable = false)
     private String telefone;
-    
-    
 
 }

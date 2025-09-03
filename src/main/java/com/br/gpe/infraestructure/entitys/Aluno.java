@@ -2,6 +2,7 @@ package com.br.gpe.infraestructure.entitys;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -10,12 +11,10 @@ import lombok.*;
 @Builder
 @Table(name = "aluno")
 @Entity
-
-
 public class Aluno {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "cpf", unique = true, nullable = false)
