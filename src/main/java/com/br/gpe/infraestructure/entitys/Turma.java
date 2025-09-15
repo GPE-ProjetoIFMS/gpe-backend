@@ -5,10 +5,11 @@
 
 package com.br.gpe.infraestructure.entitys;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.br.gpe.enumeration.NivelHabilidade;
-
+import com.br.gpe.infraestructure.entitys.Modalidade;
 import jakarta.persistence.Column;
 /**
  *
@@ -56,6 +57,10 @@ private Professor professor;
  @Column(name = "qntdAluno", nullable = false)
 private Integer qntdAlunos;
 
+ @Column(name = "dataInicio", nullable = false)
+ private LocalDate dataInicio;
 
+ @Column(name = "dataFinal", nullable = false)
+ private LocalDate dataFinal;
 
 }

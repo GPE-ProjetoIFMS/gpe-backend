@@ -5,10 +5,23 @@
 
 package com.br.gpe.infraestructure.entitys;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+
+
 /**
  *
  * @author 07014437151
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class Matricula {
 
+    private Long id;
+    private LocalDate data;
 }
