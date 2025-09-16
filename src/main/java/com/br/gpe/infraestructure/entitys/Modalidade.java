@@ -9,9 +9,8 @@ package com.br.gpe.infraestructure.entitys;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
+@AllArgsConstructor 
 @NoArgsConstructor
 @Builder
 @Table(name = "modalidade")

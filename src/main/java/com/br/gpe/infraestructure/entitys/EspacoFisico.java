@@ -8,8 +8,7 @@ package com.br.gpe.infraestructure.entitys;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -25,6 +24,9 @@ public class EspacoFisico  {
 
     @Column(name = "nome", nullable = false)
     private String nome;
+
+    @Column(name = "capacidade", nullable = false)
+    private Integer capacidade;
     
     
 }

@@ -13,14 +13,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -39,14 +35,8 @@ public class Professor {
     @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "rg", unique = true, nullable = false)
-    private String rg;
-
     @Column(name = "dataNascimento")
     private LocalDate dataNascimento;
-
-    @Column(name = "genero")
-    private String genero;
 
     @Column(name = "endereco")
     private String endereco;

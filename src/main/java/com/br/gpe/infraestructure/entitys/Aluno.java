@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -22,9 +21,6 @@ public class Aluno {
 
     @Column(name = "nome", nullable = false)
     private String nome;
-    
-    @Column(name = "rg", unique = true, nullable = false)
-    private String rg;
     
     @Column(name = "dataNascimento", nullable = false)
     private LocalDate dataNascimento;
@@ -43,6 +39,9 @@ public class Aluno {
     
     @Column (name = "telefoneResponsavel", nullable = false)
     private String telefoneResponsavel;
+
+    @OneToMany(mappedBy = "aluno")
+    private List<Matricula> matriculas;
     
 
 }

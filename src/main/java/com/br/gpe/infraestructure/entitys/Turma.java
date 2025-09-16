@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.br.gpe.enumeration.NivelHabilidade;
-import com.br.gpe.infraestructure.entitys.Modalidade;
 import jakarta.persistence.Column;
 /**
  *
@@ -20,14 +19,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -35,21 +29,22 @@ import lombok.Setter;
 @Entity
 public class Turma {
 
-    @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+@Id
+@GeneratedValue (strategy = GenerationType.IDENTITY)
 private Long id;
 
-@Column(name = "codigo", unique = true, nullable = false)
-private String codigo;
+@Column(name = "nome", unique = true, nullable = false)
+private String nome;
 
  @Column(name = "modalidade", nullable = false)
 private Modalidade modalidade;
 
- @Column(name = "nivel", nullable = false)
+@Enumerated(EnumType.STRING)
+@Column(name = "nivel", nullable = false)
 private NivelHabilidade nivel;
 
-
-private List<Aluno> alunos;
+@OneToMany(mappedBy = "turma")
+private List<Matricula> matriculas;
 
  @Column(name = "professor", nullable = false)
 private Professor professor;
