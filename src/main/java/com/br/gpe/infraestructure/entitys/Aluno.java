@@ -3,6 +3,7 @@ package com.br.gpe.infraestructure.entitys;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
