@@ -6,10 +6,11 @@
 package com.br.gpe.infraestructure.entitys;
 
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import com.br.gpe.enumeration.NivelHabilidade;
-import jakarta.persistence.Column;
+
 /**
  *
  * @author 07014437151
@@ -51,7 +52,13 @@ private Integer qntdAlunos;
  @Column(name = "dataInicio", nullable = false)
  private LocalDate dataInicio;
 
+  @Column(name = "horarioInicio", nullable = false)
+ private ZonedDateTime  horarioInicio;
+
  @Column(name = "dataFinal", nullable = false)
  private LocalDate dataFinal;
+
+  @Column(name = "horarioFinal", nullable = false)
+ private ZonedDateTime horarioFinal;
 
 }

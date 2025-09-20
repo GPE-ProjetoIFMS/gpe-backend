@@ -20,9 +20,14 @@ public class ModalidadeController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{modalidadeId}")
     public ResponseEntity <Modalidade> buscarModalidadePorId(@PathVariable Long id){
         return ResponseEntity.ok(ModalidadeService.buscarModalidadePorId(id));
+    }
+
+    @GetMapping("/{modlidadeNome}")
+    public ResponseEntity <Modalidade> buscarModalidadePorNome(@PathVariable String nome){
+        return ResponseEntity.ok(ModalidadeService.buscarModalidadePorNome(nome));
     }
 
     @DeleteMapping

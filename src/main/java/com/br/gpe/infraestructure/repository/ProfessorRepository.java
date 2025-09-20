@@ -10,6 +10,8 @@ public interface ProfessorRepository extends JpaRepository<Professor, Long>  {
 
     Optional<Professor> findByCpf(String cpf);
 
+    
+    Optional<Professor> findByNome(String nome);
     @Transactional
     void deleteByCpf(String cpf);
 }

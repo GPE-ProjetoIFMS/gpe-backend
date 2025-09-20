@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface ModalidadeRepository extends JpaRepository<Modalidade,Long> {
 
   Optional<Modalidade> findById(Long id);
+  Optional<Modalidade> findByNome(String nome);
 
   @Transactional
   void deleteById(Long id);

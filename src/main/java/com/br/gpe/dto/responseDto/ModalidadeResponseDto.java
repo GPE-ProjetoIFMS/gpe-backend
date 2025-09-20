@@ -1,4 +1,4 @@
-package com.br.gpe.responseDto;
+package com.br.gpe.dto.responseDto;
 
 public class ModalidadeResponseDto {
 

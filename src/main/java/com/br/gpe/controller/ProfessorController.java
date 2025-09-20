@@ -19,30 +19,37 @@ public class ProfessorController {
 @PostMapping
 public ResponseEntity<Void> salvarProfessor(@RequestBody Professor professor) {
     professorService.salvarProfessor(professor);
-    return ResponseEntity.ok().build();    
-  
+    return ResponseEntity.ok().build();
 }
 
-@GetMapping("/{cpf}")
+@GetMapping("/{professorCpf}")
 public ResponseEntity<Professor> buscarProfessorPorCpf(@PathVariable String cpf) {
-    return ResponseEntity.ok(professorService.buscarProfessorPorCpf(cpf));  
+    return ResponseEntity.ok(professorService.buscarProfessorPorCpf(cpf));
 
+
+}
+@GetMapping("/{professorId}")
+public ResponseEntity<Professor> buscarProfessorPorId(@PathVariable Long id) {
+    return ResponseEntity.ok(professorService.buscarProfessorPorId(id));
+
+
+}
+@GetMapping("/{professorNome}")
+public ResponseEntity<Professor> buscarProfessorPorNome(@PathVariable String nome) {
+    return ResponseEntity.ok(professorService.buscarProfessorPorNome(nome));
 
 }
 
 @DeleteMapping
 public ResponseEntity<Void> deletarProfessorPorCpf(@RequestParam String cpf) {
     professorService.deletarProfessorPorCpf(cpf);
-    return ResponseEntity.ok().build();         
-}   
+    return ResponseEntity.ok().build();
+}
 
 @PutMapping
 public ResponseEntity<Void> atualizarProfessorPorId(@RequestParam Long id, @RequestBody Professor professor) {
     professorService.atualizarProfessorPorId(id, professor);
-    return ResponseEntity.ok().build();         
+    return ResponseEntity.ok().build();
 
 }
-
-
-
 }

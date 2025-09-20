@@ -1,4 +1,4 @@
-package com.br.gpe.requestDto;
+package com.br.gpe.dto.requestDto;
 
 public class ModalidadeRequestDto {
 

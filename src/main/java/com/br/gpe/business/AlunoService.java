@@ -23,6 +23,18 @@ public class AlunoService {
                                 () -> new RuntimeException("Cpf não encontrado."));
         }
 
+        public Aluno buscarAlunoPorId(Long id) {
+                return repository.findById(id).orElseThrow(
+                                () -> new RuntimeException("Id não encontrado."));
+
+        }
+
+        public Aluno buscarAlunoPorNome(String nome) {
+                return repository.findByNome(nome).orElseThrow(
+                                () -> new RuntimeException("Nome não encontrado."));
+
+        }
+
         public void deletarAlunoPorCpf(String cpf) {
                 repository.deleteByCpf(cpf);
         }

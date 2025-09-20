@@ -11,6 +11,8 @@ public interface AlunoRepository extends JpaRepository<Aluno,Long> {
 
   Optional<Aluno> findByCpf(String cpf);
 
+  Optional<Aluno> findByNome(String cpf);
+
   @Transactional
   void deleteByCpf(String cpf);
 }

@@ -1,8 +1,11 @@
 package com.br.gpe.infraestructure.repository;
 
 import com.br.gpe.infraestructure.entitys.Agendamento;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.transaction.Transactional;
+
 import java.util.Optional;
 
 public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> {

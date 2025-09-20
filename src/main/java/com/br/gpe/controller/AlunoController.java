@@ -15,25 +15,35 @@ public class AlunoController {
     private final AlunoService alunoService;
 
     @PostMapping
-    public ResponseEntity<Void> salvarAluno(@RequestBody Aluno aluno){
+    public ResponseEntity<Void> salvarAluno(@RequestBody Aluno aluno) {
         alunoService.salvarAluno(aluno);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/{cpf}")
-    public ResponseEntity <Aluno> buscarAlunoPorCpf(@PathVariable String cpf){
+    @GetMapping("/{AlunoId}")
+    public ResponseEntity<Aluno> buscarAlunoPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(alunoService.buscarAlunoPorId(id));
+    }
+
+    @GetMapping("/{AlunoCpf}")
+    public ResponseEntity<Aluno> buscarAlunoPorCpf(@PathVariable String cpf) {
         return ResponseEntity.ok(alunoService.buscarAlunoPorCpf(cpf));
     }
 
+    @GetMapping("/{AlunoNome}")
+    public ResponseEntity<Aluno> buscarAlunoPorNome(@PathVariable String nome) {
+        return ResponseEntity.ok(alunoService.buscarAlunoPorNome(nome));
+    }
+
     @DeleteMapping
-    public ResponseEntity<Void> deletarAlunoPorCpf(@RequestParam String cpf){
-       alunoService.deletarAlunoPorCpf(cpf);
+    public ResponseEntity<Void> deletarAlunoPorCpf(@RequestParam String cpf) {
+        alunoService.deletarAlunoPorCpf(cpf);
         return ResponseEntity.ok().build();
     }
 
     @PutMapping
-public ResponseEntity<Void> atualizarAlunoPorId(@RequestParam Long id ,@RequestBody Aluno aluno){
-        alunoService.atualizarAlunoPorId(id,aluno);
+    public ResponseEntity<Void> atualizarAlunoPorId(@RequestParam Long id, @RequestBody Aluno aluno) {
+        alunoService.atualizarAlunoPorId(id, aluno);
         return ResponseEntity.ok().build();
     }
 

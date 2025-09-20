@@ -24,6 +24,11 @@ public class ModalidadeService {
                 () -> new RuntimeException("Id não encontrado."));
     }
 
+   public Modalidade buscarModalidadePorNome(String nome) {
+        return repository.findByNome(nome).orElseThrow(
+                () -> new RuntimeException("Nome não encontrado."));
+    }
+
     public void deletarModalidadePorId(Long id) {
         repository.deleteById(id);
     }

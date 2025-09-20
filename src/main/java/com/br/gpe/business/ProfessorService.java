@@ -23,6 +23,16 @@ public class ProfessorService {
                 () -> new RuntimeException("Cpf não encontrado."));
     }
 
+    public Professor buscarProfessorPorId(Long id) {
+        return repository.findById(id).orElseThrow(
+                () -> new RuntimeException("Id não encontrado."));
+    }
+
+    public Professor buscarProfessorPorNome(String nome) {
+        return repository.findByNome(nome).orElseThrow(
+                () -> new RuntimeException("Nome não encontrado."));
+    }
+
     public void deletarProfessorPorCpf(String cpf) {
         repository.deleteByCpf(cpf);
     }
