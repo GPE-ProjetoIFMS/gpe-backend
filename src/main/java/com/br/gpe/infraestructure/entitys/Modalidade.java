@@ -27,6 +27,10 @@ public class Modalidade {
     private String nome;
 
 
+    @Column(name = "codigo", unique = true, nullable = false, length = 10)
+    private String codigo;
+
+
 
 }
 

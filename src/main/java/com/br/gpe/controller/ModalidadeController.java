@@ -1,13 +1,21 @@
 package com.br.gpe.controller;
 
 import com.br.gpe.business.ModalidadeService;
+import com.br.gpe.dto.ModalidadeRequestDTO;
+import com.br.gpe.dto.ModalidadeResponseDTO;
 import com.br.gpe.infraestructure.entitys.Modalidade;
+
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+
+import java.net.URI;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
-@RequestMapping("/modalidade")
+@RequestMapping("/modalidades")
 @RequiredArgsConstructor
 
 public class ModalidadeController {
@@ -15,17 +23,22 @@ public class ModalidadeController {
     private final ModalidadeService ModalidadeService;
 
     @PostMapping
-    public ResponseEntity<Void> salvarModalidade(@RequestBody Modalidade modalidade){
-        ModalidadeService.salvarModalidade(modalidade);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<ModalidadeResponseDTO> salvarModalidade(@RequestBody @Valid ModalidadeRequestDTO dados){
+       // Recebe o DTO de requisição
+        ModalidadeResponseDTO novaModalidade = ModalidadeService.criarModalidade(dados);
+       // Devolve o DTO de resposta
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(novaModalidade.id()).toUri();
+        return ResponseEntity.created(uri).body(novaModalidade);
     }
 
-    @GetMapping("/{modalidadeId}")
-    public ResponseEntity <Modalidade> buscarModalidadePorId(@PathVariable Long id){
-        return ResponseEntity.ok(ModalidadeService.buscarModalidadePorId(id));
+    @GetMapping("/{id}")
+    public ResponseEntity<ModalidadeResponseDTO> buscarModalidadePorId(@PathVariable Long id) {
+        ModalidadeResponseDTO modalidade = ModalidadeService.buscarModalidadePorId(id);
+        return ResponseEntity.ok(modalidade);
     }
 
-    @GetMapping("/{modlidadeNome}")
+    @GetMapping("/{modalidadeNome}")
     public ResponseEntity <Modalidade> buscarModalidadePorNome(@PathVariable String nome){
         return ResponseEntity.ok(ModalidadeService.buscarModalidadePorNome(nome));
     }

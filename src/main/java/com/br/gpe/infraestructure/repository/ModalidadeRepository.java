@@ -11,6 +11,7 @@ public interface ModalidadeRepository extends JpaRepository<Modalidade,Long> {
 
   Optional<Modalidade> findById(Long id);
   Optional<Modalidade> findByNome(String nome);
+  Optional<Modalidade> findByCodigo(String codigo);
 
   @Transactional
   void deleteById(Long id);
