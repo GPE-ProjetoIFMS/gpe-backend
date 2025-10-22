@@ -49,10 +49,13 @@ public class ModalidadeService {
         repository.saveAndFlush(modalidade);
     }
 
-   public Modalidade buscarModalidadePorId(Long id) {
-        return repository.findById(id).orElseThrow(
-                () -> new RuntimeException("Id não encontrado."));
-    }
+  public ModalidadeResponseDTO buscarModalidadePorId(Long id) {
+    Modalidade modalidadeEntidade = repository.findById(id).orElseThrow(
+            () -> new RuntimeException("Id não encontrado."));
+    
+    // Converte a entidade para o DTO antes de retornar
+    return new ModalidadeResponseDTO(modalidadeEntidade); 
+}
 
    public Modalidade buscarModalidadePorNome(String nome) {
         return repository.findByNome(nome).orElseThrow(

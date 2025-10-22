@@ -32,9 +32,10 @@ public class ModalidadeController {
         return ResponseEntity.created(uri).body(novaModalidade);
     }
 
-    @GetMapping("/{id}")
+@GetMapping("/{id}")
     public ResponseEntity<ModalidadeResponseDTO> buscarModalidadePorId(@PathVariable Long id) {
-        ModalidadeResponseDTO modalidade = ModalidadeService.buscarModalidadePorId(id);
+        // Esta linha espera um ModalidadeResponseDTO
+        ModalidadeResponseDTO modalidade = ModalidadeService.buscarModalidadePorId(id); 
         return ResponseEntity.ok(modalidade);
     }
 

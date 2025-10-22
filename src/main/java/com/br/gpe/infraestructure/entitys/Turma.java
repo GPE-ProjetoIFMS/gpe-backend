@@ -33,7 +33,8 @@ private Long id;
 @Column(name = "nome", unique = true, nullable = false)
 private String nome;
 
- @Column(name = "modalidade", nullable = false)
+@ManyToOne // Indica o relacionamento
+@JoinColumn(name = "modalidade_id", nullable = false) // Define a coluna de chave estrangeira
 private Modalidade modalidade;
 
 @Enumerated(EnumType.STRING)
@@ -43,7 +44,8 @@ private NivelHabilidade nivel;
 @OneToMany(mappedBy = "turma")
 private List<Matricula> matriculas;
 
- @Column(name = "professor", nullable = false)
+@ManyToOne // Indica o relacionamento
+@JoinColumn(name = "professor_id", nullable = false) // Define a coluna de chave estrangeira
 private Professor professor;
 
  @Column(name = "qntdAluno", nullable = false)

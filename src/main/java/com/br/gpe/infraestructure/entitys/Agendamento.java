@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 @Data
@@ -19,7 +21,8 @@ public class Agendamento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "id_turma", unique = true, nullable = false)
+    @ManyToOne // Indica o relacionamento
+    @JoinColumn(name = "turma_id", nullable = false) // Define a coluna de chave estrangeira
     private Turma turma;
 
     @Column(name = "data_inicio", nullable = false)
@@ -28,10 +31,12 @@ public class Agendamento {
     @Column(name = "data_fim", nullable = false)
     private LocalDate dataFim;
 
-    @Column(name = "responsavel_externo")
+    @ManyToOne // Indica o relacionamento
+    @JoinColumn(name = "responsavel_externo_id", nullable = false) // Define a coluna de chave estrangeira
     private ResponsavelExterno responsavelExterno;
 
-    @Column(name = "id_espaco_fisico", nullable = false)
+    @ManyToOne // Indica o relacionamento
+    @JoinColumn(name = "especo_fisico_id", nullable = false) // Define a coluna de chave estrangeira
     private EspacoFisico espacoFisico;
 
     @Column(name = "dataFinal", nullable = false)

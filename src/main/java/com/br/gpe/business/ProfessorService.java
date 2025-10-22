@@ -40,13 +40,28 @@ public class ProfessorService {
     public void atualizarProfessorPorId(Long id, Professor professor) {
         Professor professorEntity = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException(("Professor não encontrado")));
-        Professor professorAtualizado = Professor.builder()
-                .cpf(professor.getCpf() != null ? professor.getCpf() : professorEntity.getCpf())
-                .nome(professor.getNome() != null ? professor.getNome() : professorEntity.getNome())
-                .id(professorEntity.getId())
-                .build();
-        repository.saveAndFlush(professorAtualizado);
+    // 2. Atualiza os campos DA ENTIDADE BUSCADA
+        if (professor.getCpf() != null) {
+            professorEntity.setCpf(professor.getCpf());
+        }
+        if (professor.getNome() != null) {
+            professorEntity.setNome(professor.getNome());
+        }
 
+        if (professor.getDataNascimento() != null) {
+            professorEntity.setDataNascimento(professor.getDataNascimento());
+        }
+        if (professor.getEndereco() != null) {
+            professorEntity.setEndereco(professor.getEndereco());
+        }
+        if (professor.getTelefone() != null) {
+            professorEntity.setTelefone(professor.getTelefone());
+        }
+
+        
+        // 3. Salva a entidade que foi modificada
+        repository.save(professorEntity);
+                
     }
 
 }
