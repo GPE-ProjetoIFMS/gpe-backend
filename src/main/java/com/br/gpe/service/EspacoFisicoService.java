@@ -1,4 +1,4 @@
-package com.br.gpe.business;
+package com.br.gpe.service;
 
 import org.springframework.stereotype.Service;
 import com.br.gpe.infraestructure.entitys.EspacoFisico;
@@ -24,7 +24,7 @@ public class EspacoFisicoService {
     }
 
     public void deletarEspacoFisicoPorId(Long id) {
-        repository.deleteByCpf(id);
+        repository.deleteById(id);
     }
 
     public void atualizarEspacoFisicoPorId(Long id, EspacoFisico EspacoFisico) {

@@ -1,7 +1,8 @@
 package com.br.gpe.controller;
 
-import com.br.gpe.business.ResponsavelExternoService;
 import com.br.gpe.infraestructure.entitys.ResponsavelExterno;
+import com.br.gpe.service.ResponsavelExternoService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,11 +1,11 @@
-package com.br.gpe.business;
+package com.br.gpe.service;
 
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.br.gpe.dto.ModalidadeRequestDTO;
-import com.br.gpe.dto.ModalidadeResponseDTO;
+import com.br.gpe.dto.ModalidadeRequest;
+import com.br.gpe.dto.ModalidadeResponse;
 import com.br.gpe.infraestructure.entitys.Modalidade;
 import com.br.gpe.infraestructure.repository.ModalidadeRepository;
 
@@ -23,7 +23,7 @@ public class ModalidadeService {
         this.repository = repository;
     }
     @Transactional // Garante que a operação com o banco seja atômica
-    public ModalidadeResponseDTO criarModalidade(ModalidadeRequestDTO dados) {
+    public ModalidadeResponse criarModalidade(ModalidadeRequest dados) {
         
         // 1. BOA PRÁTICA: Verificar se já existe uma modalidade com este código
         Optional<Modalidade> modalidadeExistente = repository.findByCodigo(dados.codigo());
@@ -42,19 +42,17 @@ public class ModalidadeService {
 
         // 4. Converter a Entidade salva (que agora tem ID) em um DTO de Resposta
         //    (Estamos usando aquele construtor prático que criamos no ResponseDTO)
-        return new ModalidadeResponseDTO(modalidadeSalva);
+        return new ModalidadeResponse(modalidadeSalva);
     }
 
     public void salvarModalidade(Modalidade modalidade) {
         repository.saveAndFlush(modalidade);
     }
 
-  public ModalidadeResponseDTO buscarModalidadePorId(Long id) {
-    Modalidade modalidadeEntidade = repository.findById(id).orElseThrow(
+  public ModalidadeResponse buscarModalidadePorId(Long id) {
+    Modalidade modalidade = repository.findById(id).orElseThrow(
             () -> new RuntimeException("Id não encontrado."));
-    
-    // Converte a entidade para o DTO antes de retornar
-    return new ModalidadeResponseDTO(modalidadeEntidade); 
+    return new ModalidadeResponse(modalidade); // Conversão adicionada
 }
 
    public Modalidade buscarModalidadePorNome(String nome) {

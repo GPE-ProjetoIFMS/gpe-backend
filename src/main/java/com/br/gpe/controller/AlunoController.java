@@ -1,7 +1,8 @@
 package com.br.gpe.controller;
 
-import com.br.gpe.business.AlunoService;
 import com.br.gpe.infraestructure.entitys.Aluno;
+import com.br.gpe.service.AlunoService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

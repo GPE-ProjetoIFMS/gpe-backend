@@ -1,9 +1,9 @@
 package com.br.gpe.controller;
 
-import com.br.gpe.business.ModalidadeService;
-import com.br.gpe.dto.ModalidadeRequestDTO;
-import com.br.gpe.dto.ModalidadeResponseDTO;
+import com.br.gpe.dto.ModalidadeRequest;
+import com.br.gpe.dto.ModalidadeResponse;
 import com.br.gpe.infraestructure.entitys.Modalidade;
+import com.br.gpe.service.ModalidadeService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -23,9 +23,9 @@ public class ModalidadeController {
     private final ModalidadeService ModalidadeService;
 
     @PostMapping
-    public ResponseEntity<ModalidadeResponseDTO> salvarModalidade(@RequestBody @Valid ModalidadeRequestDTO dados){
+    public ResponseEntity<ModalidadeResponse> salvarModalidade(@RequestBody @Valid ModalidadeRequest dados){
        // Recebe o DTO de requisição
-        ModalidadeResponseDTO novaModalidade = ModalidadeService.criarModalidade(dados);
+        ModalidadeResponse novaModalidade = ModalidadeService.criarModalidade(dados);
        // Devolve o DTO de resposta
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(novaModalidade.id()).toUri();
@@ -33,9 +33,9 @@ public class ModalidadeController {
     }
 
 @GetMapping("/{id}")
-    public ResponseEntity<ModalidadeResponseDTO> buscarModalidadePorId(@PathVariable Long id) {
+    public ResponseEntity<ModalidadeResponse> buscarModalidadePorId(@PathVariable Long id) {
         // Esta linha espera um ModalidadeResponseDTO
-        ModalidadeResponseDTO modalidade = ModalidadeService.buscarModalidadePorId(id); 
+        ModalidadeResponse modalidade = ModalidadeService.buscarModalidadePorId(id); 
         return ResponseEntity.ok(modalidade);
     }
 

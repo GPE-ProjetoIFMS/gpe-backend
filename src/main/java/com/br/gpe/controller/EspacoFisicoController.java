@@ -1,7 +1,8 @@
 package com.br.gpe.controller;
 
-import com.br.gpe.business.EspacoFisicoService;
 import com.br.gpe.infraestructure.entitys.EspacoFisico;
+import com.br.gpe.service.EspacoFisicoService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

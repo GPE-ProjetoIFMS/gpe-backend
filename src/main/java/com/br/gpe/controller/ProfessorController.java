@@ -1,8 +1,9 @@
 package com.br.gpe.controller;
 
 
-import com.br.gpe.business.ProfessorService;
 import com.br.gpe.infraestructure.entitys.Professor;
+import com.br.gpe.service.ProfessorService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

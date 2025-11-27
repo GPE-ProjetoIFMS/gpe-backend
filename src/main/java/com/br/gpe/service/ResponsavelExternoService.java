@@ -1,4 +1,4 @@
-package com.br.gpe.business;
+package com.br.gpe.service;
 
 import org.springframework.stereotype.Service;
 import com.br.gpe.infraestructure.entitys.ResponsavelExterno;

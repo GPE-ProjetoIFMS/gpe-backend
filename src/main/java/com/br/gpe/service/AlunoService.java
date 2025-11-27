@@ -1,4 +1,4 @@
-package com.br.gpe.business;
+package com.br.gpe.service;
 
 import com.br.gpe.infraestructure.entitys.Aluno;
 import com.br.gpe.infraestructure.repository.AlunoRepository;
